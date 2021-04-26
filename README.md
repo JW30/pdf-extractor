@@ -1,4 +1,4 @@
-A simple Flask website to extract 8-digit product numbers from PDF files.
+A simple Flask web application to extract 8-digit product numbers from PDF files.
 
 The website: http://jw30.pythonanywhere.com
 
