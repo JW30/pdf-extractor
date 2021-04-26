@@ -12,7 +12,7 @@ def my_page():
     if request.method == "POST":
         f = request.files.get("file")
         filename = secure_filename(f.filename)
-        file_path = '/Users/jonawag/PycharmProjects/jwpdf/temp_files/' \
+        file_path = '/home/JW30/jw30pdf/temp_files/' \
                     + filename
         f.save(file_path)
         output_data = get_numbers(file_path)
