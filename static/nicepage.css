@@ -12254,45 +12254,6 @@ section.u-image,
   pointer-events: auto;
   pointer-events: initial;
 }
-.u-sticky {
-  position: fixed;
-  top: 0;
-  transition: background-color 250ms ease;
-}
-@supports (position: sticky) {
-  .u-sticky {
-    position: sticky;
-  }
-}
-@supports (position: -webkit-sticky) {
-  .u-sticky {
-    position: -webkit-sticky;
-  }
-}
-.u-overlap .u-header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-.u-sticky,
-.u-overlap .u-header {
-  z-index: 20;
-}
-.u-overlap .u-header.u-sticky {
-  position: fixed;
-}
-.u-overlap.u-overlap-transparent .u-header {
-  background-color: transparent !important;
-  background-image: none !important;
-}
-.u-overlap.u-offcanvas-opened .u-header.u-sticky {
-  z-index: auto;
-  position: absolute !important;
-}
-.u-overlap.u-offcanvas-opened .u-header.u-sticky + section {
-  z-index: -1;
-}
 .u-stick-footer {
   display: flex;
   flex-direction: column;
@@ -12388,6 +12349,45 @@ section.u-image,
     border-left: 0 !important;
     border-right: 0 !important;
   }
+}
+.u-header.u-sticky {
+  position: fixed;
+  top: 0;
+  transition: background-color 250ms ease;
+}
+@supports (position: sticky) {
+  .u-header.u-sticky {
+    position: sticky;
+  }
+}
+@supports (position: -webkit-sticky) {
+  .u-header.u-sticky {
+    position: -webkit-sticky;
+  }
+}
+.u-overlap .u-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.u-header.u-sticky,
+.u-overlap .u-header {
+  z-index: 20;
+}
+.u-overlap .u-header.u-sticky {
+  position: fixed;
+}
+.u-overlap.u-overlap-transparent .u-header {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.u-overlap.u-offcanvas-opened .u-header.u-sticky {
+  z-index: auto;
+  position: absolute !important;
+}
+.u-overlap.u-offcanvas-opened .u-header.u-sticky + section {
+  z-index: -1;
 }
 .u-sheet.u-content-layout {
   display: flex;
@@ -18637,6 +18637,15 @@ a.pswp__share--download:hover {
 .u-accordion.u-spacing-0 .u-accordion-item:not(:last-child) .u-accordion-link[class*=u-border-] ~ .u-accordion-pane,
 .u-accordion:not([class*="u-spacing-"]) .u-accordion-item:not(:last-child) .u-accordion-link[class*=u-border-] ~ .u-accordion-pane {
   border-bottom: none;
+}
+.u-section-row {
+  position: relative;
+}
+.u-section-row.u-sticky-fixed {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 .u-carousel {
   position: relative;
@@ -34511,19 +34520,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-sheet-1 {
-  min-height: 80px;
-}
-
-.u-header .u-text-1 {
-  font-size: 1.875rem;
-  background-image: none;
-  font-weight: normal;
-  width: 135px;
-  margin: 16px auto 0;
-}
-
-.u-header .u-btn-1 {
-  padding: 0;
+  min-height: 63px;
 }
 
 .u-header .u-social-icons-1 {
@@ -34532,64 +34529,66 @@ a.u-link.u-text-hover-grey-90:hover {
   min-height: 16px;
   width: 25px;
   min-width: 16px;
-  margin: -36px 100px 28px auto;
+  animation-duration: 1000ms;
+  margin: 19px 100px 0 auto;
 }
 
 .u-header .u-icon-1 {
   height: 100%;
 }
+
+.u-header .u-text-1 {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: normal;
+  margin: -31px 484px 13px 496px;
+}
+
+.u-header .u-btn-1 {
+  padding: 0;
+}
 @media (max-width: 1199px) {
-  .u-header .u-sheet-1 {
-    min-height: 81px;
+  .u-header .u-social-icons-1 {
+    margin-right: 80px;
   }
 
   .u-header .u-text-1 {
-    width: 133px;
-  }
-
-  .u-header .u-social-icons-1 {
-    margin-bottom: 29px;
+    width: 148px;
+    margin-right: 384px;
+    margin-left: 396px;
   }
 }
 @media (max-width: 991px) {
-  .u-header .u-sheet-1 {
-    min-height: 82px;
+  .u-header .u-social-icons-1 {
+    margin-top: 19px;
+    margin-right: 60px;
   }
 
   .u-header .u-text-1 {
-    margin-top: 17px;
-  }
-
-  .u-header .u-social-icons-1 {
-    margin-right: 100px;
+    margin-top: -31px;
+    margin-right: 274px;
+    margin-left: 286px;
   }
 }
 @media (max-width: 767px) {
-  .u-header .u-sheet-1 {
-    min-height: 83px;
+  .u-header .u-social-icons-1 {
+    margin-top: 19px;
+    margin-right: 28px;
   }
 
   .u-header .u-text-1 {
-    margin-top: 18px;
-  }
-
-  .u-header .u-social-icons-1 {
-    margin-right: 70px;
-    margin-bottom: 29px;
+    margin-top: -31px;
+    margin-right: 184px;
+    margin-left: 196px;
   }
 }
 @media (max-width: 575px) {
-  .u-header .u-sheet-1 {
-    min-height: 111px;
+  .u-header .u-social-icons-1 {
+    margin-right: 13px;
   }
 
   .u-header .u-text-1 {
-    margin-top: 31px;
-  }
-
-  .u-header .u-social-icons-1 {
-    margin-right: 20px;
-    margin-bottom: 43px;
+    margin: -32px 84px 13px 96px;
   }
 }
 .u-footer {
@@ -34597,7 +34596,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-footer .u-sheet-1 {
-  min-height: 100px;
+  min-height: 14px;
 }
 
 

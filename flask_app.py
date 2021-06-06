@@ -11,16 +11,17 @@ app = Flask(__name__)
 def my_page():
     if request.method == "POST":
         f = request.files.get("file")
-        filename = secure_filename(f.filename)
-        file_path = os.path.join('temp_files', filename)
-        f.save(file_path)
-        output_data = get_numbers(file_path)
-        response = make_response(output_data)
-        response.headers["Content-Disposition"] = \
-            f"attachment; filename={filename[:-4]}.txt"
-        os.remove(file_path)
+        if f:
+            filename = secure_filename(f.filename)
+            file_path = os.path.join('temp_files', filename)
+            f.save(file_path)
+            output_data = get_numbers(file_path)
+            response = make_response(output_data)
+            response.headers["Content-Disposition"] = \
+                f"attachment; filename={filename[:-4]}.txt"
+            os.remove(file_path)
 
-        return response
+            return response
 
     return render_template('index.html')
 
