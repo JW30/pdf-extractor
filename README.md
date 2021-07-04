@@ -4,4 +4,4 @@ The website: https://jw30.pythonanywhere.com
 
 Frontend is created using nicepage: https://nicepage.com
 
-For setup you'll need to create a folder named "temp_files" inside the working directory.
+For setup you'll need to create an empty folder named "temp_files" inside the working directory.
