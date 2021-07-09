@@ -8,7 +8,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>PDF Extractor</title>
     <link rel="stylesheet" href="/static/nicepage.css" media="screen">
-<link rel="stylesheet" href="/static/PDF-Extractor.css" media="screen">
+    <link rel="stylesheet" href="/static/PDF-Extractor.css" media="screen">
     <script class="u-script" type="text/javascript" src="/static/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="/static/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.16.1, nicepage.com">
@@ -60,6 +60,22 @@
           <div class="u-container-layout u-container-layout-1">
             <p class="u-text u-text-grey-75 u-text-1">Extract product numbers&nbsp;from PDF files. </p>
                 <form method="post" action="." enctype="multipart/form-data">
+                    {% if flag %}
+                        <script type="text/javascript">
+                          const text = '{{output}}';
+                          const filename = '{{filename}}';
+                          var element = document.createElement('a');
+                          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                          element.setAttribute('download', filename);
+
+                          element.style.display = 'none';
+                          document.body.appendChild(element);
+
+                          element.click();
+
+                          document.body.removeChild(element);
+                        </script>
+                    {% endif %}
                     <input type="file" name="file" id="choose-btn" accept=".pdf" hidden/>
                     <label for="choose-btn" class="u-btn u-btn-round u-button-style u-hover-palette-2-light-1 u-palette-2-base u-radius-50 u-btn-1">Choose file</label>
                     <input type="submit" id="process-btn" onclick="myFunction()" hidden/>
@@ -83,6 +99,7 @@
         </div>
       </div>
     </section>
+
 
 
     <footer class="u-align-left u-clearfix u-footer u-grey-5 u-footer" id="sec-9b50"><div class="u-clearfix u-sheet u-sheet-1"></div></footer>

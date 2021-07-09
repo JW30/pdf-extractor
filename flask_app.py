@@ -1,4 +1,4 @@
-from flask import Flask, make_response, request, render_template
+from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
 import os
 
@@ -16,14 +16,13 @@ def my_page():
             file_path = os.path.join('temp_files', filename)
             f.save(file_path)
             output_data = get_numbers(file_path)
-            response = make_response(output_data)
-            response.headers["Content-Disposition"] = \
-                f"attachment; filename={filename[:-4]}.txt"
             os.remove(file_path)
-
-            return response
+            txt_filename = filename[:-4]+".txt"
+            return render_template('index.html', output=output_data,
+                                   flag=1, filename=txt_filename)
 
     return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
