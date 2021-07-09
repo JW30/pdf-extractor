@@ -18,8 +18,7 @@ def my_page():
             output_data = get_numbers(file_path)
             os.remove(file_path)
             txt_filename = filename[:-4]+".txt"
-            return render_template('index.html', output=output_data,
-                                   flag=1, filename=txt_filename)
+            return render_template('index.html', output=output_data, flag=1, filename=txt_filename)
 
     return render_template('index.html')
 
