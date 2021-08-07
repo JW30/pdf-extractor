@@ -16,6 +16,7 @@ def get_numbers(file_path):
         if len(x) == 8 and x not in output:
             output.append(x)
     numbs_amnt = len(output)
+    # Formatting of output string
     out_string += f'{numbs_amnt} product numbers found:\\n'
     for i, x in enumerate(output):
         if (i+1) % 10 == 0:
