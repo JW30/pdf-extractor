@@ -5,7 +5,7 @@ from datetime import datetime
 
 def get_numbers(file_path):
     # Get PDF content and filter for 8 digit numbers
-    output = []
+    output, out_string = [], ''
     try:
         pdf_content = textract.process(file_path)
     except UnicodeDecodeError:
@@ -16,6 +16,13 @@ def get_numbers(file_path):
         if len(x) == 8 and x not in output:
             output.append(x)
     numbs_amnt = len(output)
+    out_string += f'{numbs_amnt} product numbers found:\\n'
+    for i, x in enumerate(output):
+        if (i+1) % 10 == 0:
+            out_string += f'{x}\\n'
+        else:
+            out_string += f'{x} '
+    out_string.rstrip()
 
     # Get date, amount of processed PDF files and extracted numbers
     # and write to record.txt
@@ -31,5 +38,4 @@ def get_numbers(file_path):
         f.write(f'PDF files processed: {amnt}\n'
                 f'Product numbers extracted: {curr_numbs}\n'
                 f'Last time used: {dt_string}')
-
-    return f'{numbs_amnt} product numbers found: ' + ' '.join(output)
+    return out_string
