@@ -25,18 +25,11 @@ def get_numbers(file_path):
             out_string += f'{x} '
     out_string.rstrip()
 
-    # Get date, amount of processed PDF files and extracted numbers
-    # and write to record.txt
+    # Save datetime, PDF-name and amount of numbers extracted to record.txt
     now = datetime.now()
-    dt_string = now.strftime('%d/%m/%Y %H:%M:%S')
-    with open('record.txt', 'r') as f:
-        lines = f.readlines()
-        amnt = int(''.join(re.sub('\D', ' ', lines[0]).split()))
-        amnt += 1
-        curr_numbs = int(''.join(re.sub('\D', ' ', lines[1]).split()))
-        curr_numbs += numbs_amnt
-    with open('record.txt', 'w') as f:
-        f.write(f'PDF files processed: {amnt}\n'
-                f'Product numbers extracted: {curr_numbs}\n'
-                f'Last time used: {dt_string}')
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    with open("record.txt", "a") as f:
+        f.write(f'Last time used: {dt_string}\n'
+                f'PDF file: {file_path.split("/", 1)[1]}\n'
+                f'Numbers extracted: {numbs_amnt}\n\n')
     return out_string
